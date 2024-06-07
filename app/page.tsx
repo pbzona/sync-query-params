@@ -39,6 +39,10 @@ async function ServerRequest({ params }: { params?: URLSearchParams }) {
     params = new URLSearchParams();
   }
 
+  const baseUrl =
+    process.env.VERCEL_ENV === 'production' || 'preview'
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost';
   const res = await fetch(`http://localhost:3000/api?${params.toString()}`, {
     method: 'GET',
   });
