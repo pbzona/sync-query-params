@@ -40,7 +40,8 @@ async function ServerRequest({ params }: { params?: URLSearchParams }) {
     params = new URLSearchParams();
   }
 
-  const baseUrl = getApiUrl();
+  const baseUrl = `https://${process.env.VERCEL_URL}`;
+
   const res = await fetch(`${baseUrl}/api?${params.toString()}`, {
     method: 'GET',
   });
