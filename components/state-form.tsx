@@ -50,7 +50,7 @@ export function StateForm() {
             id="option-a"
             name="a"
             onChange={handleCheckboxChange}
-            checked={selected.includes('a')}
+            checked={selected?.includes('a')}
           ></input>
           <label htmlFor="option-a">A</label>
         </div>
@@ -60,7 +60,7 @@ export function StateForm() {
             id="option-b"
             name="b"
             onChange={handleCheckboxChange}
-            checked={selected.includes('b')}
+            checked={selected?.includes('b')}
           ></input>
           <label htmlFor="option-b">B</label>
         </div>
@@ -70,7 +70,7 @@ export function StateForm() {
             id="option-c"
             name="c"
             onChange={handleCheckboxChange}
-            checked={selected.includes('c')}
+            checked={selected?.includes('c')}
           ></input>
           <label htmlFor="option-c">C</label>
         </div>
