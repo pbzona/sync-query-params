@@ -10,23 +10,12 @@ export function StateForm() {
 
   const [selected, setSelected] = useState<string[]>([]);
 
-  const handleCheckboxChange: ChangeEventHandler<HTMLInputElement> = (
-    event: ChangeEvent<HTMLInputElement>
-  ) => {
-    const { name, checked } = event.target;
-
-    setSelected(prev => {
-      if (checked) {
-        return [...prev, name];
-      }
-      return prev.filter(option => option !== name);
-    });
-  };
-
   // Sync selected checkbox state with URL params
   useEffect(() => {
-    const options = searchParams.getAll('option');
-    setSelected(options);
+    if (searchParams.get('option')) {
+      const options = searchParams.getAll('option');
+      setSelected(options);
+    }
   }, [searchParams]);
 
   // Sync URL params with selected checkbox state
@@ -40,6 +29,18 @@ export function StateForm() {
     router.push(href);
   }, [selected]);
 
+  const handleCheckboxChange: ChangeEventHandler<HTMLInputElement> = (
+    event: ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, checked } = event.target;
+
+    setSelected(prev => {
+      if (checked) {
+        return [...prev, name];
+      }
+      return prev.filter(option => option !== name);
+    });
+  };
   return (
     <div className="bg-white rounded-lg shadow-lg p-8 min-w-[240px]">
       <h3 className="text-lg font-semibold mb-4">Filter Options</h3>

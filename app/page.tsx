@@ -44,6 +44,7 @@ async function ServerRequest({ params }: { params?: URLSearchParams }) {
 
   const res = await fetch(`${baseUrl}/api?${params.toString()}`, {
     method: 'GET',
+    cache: 'no-store',
   });
 
   const options = await res.json();
