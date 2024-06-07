@@ -10,13 +10,13 @@ export function StateForm() {
 
   const [selected, setSelected] = useState<string[]>([]);
 
-  // Sync selected checkbox state with URL params
+  // Sync selected checkbox state with URL params on initial mount
   useEffect(() => {
     if (searchParams.get('option')) {
       const options = searchParams.getAll('option');
       setSelected(options);
     }
-  }, [searchParams]);
+  }, []);
 
   // Sync URL params with selected checkbox state
   useEffect(() => {
